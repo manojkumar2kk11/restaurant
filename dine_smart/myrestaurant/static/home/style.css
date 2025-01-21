@@ -1,0 +1,12 @@
+body {
+    color: #cd9400;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.hero {
+    background: url('images/home_background.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
