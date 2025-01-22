@@ -16,34 +16,71 @@
   <title>The Delicious Restaurant</title>
 </head>
 <body>
-    <div class="hero container-fluid">
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{%url 'homepage' %}">Delicious Restaurant</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown"
-          aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="hero container-fluid">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{%url 'homepage' %}">Delicious Restaurant</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkIcons"
+          aria-controls="navbarNavDarkIcons" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-          </button>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkIcons">
+          <ul class="navbar-nav ms-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_bookings' %}">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Show Bookings</span>
+              </a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'account_login' %}">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <span>Login</span>
+              </a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_menu' %}">
+                <i class="fa-solid fa-utensils"></i>
+                <span>Menu</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'booktable' %}">
+                <i class="fa-solid fa-chair"></i>
+                <span>Book Table</span>
+              </a>
+            </li>
+          </ul>
         </div>
-      </nav>
-      <main>
-
-        <!--footer-->
-        <div class="container footer fixed-bottom">
-          <div class="row justify-content-center">
-            <div class="col-2">
-              <a href="https://facebook.com"><i class="fa-brands fa-square-facebook"></i></a>
-            </div>
-            <div class="col-2">
-              <a href="https://instagram.com"><i class="fa-brands fa-square-instagram"></i></a>
-            </div>
-            <div class="col-2">
-              <a href="https://twitter.com"><i class="fa-brands fa-square-x-twitter"></i></a>
-            </div>
+      </div>
+    </nav>
+  
+    <main>
+      <!-- footer -->
+      <div class="container footer fixed-bottom">
+        <div class="row justify-content-center">
+          <div class="col-2">
+            <a href="https://facebook.com"><i class="fa-brands fa-square-facebook"></i></a>
+          </div>
+          <div class="col-2">
+            <a href="https://instagram.com"><i class="fa-brands fa-square-instagram"></i></a>
+          </div>
+          <div class="col-2">
+            <a href="https://twitter.com"><i class="fa-brands fa-square-x-twitter"></i></a>
           </div>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
+  </div>
 
     <!-- scripts -->
   <script src="https://kit.fontawesome.com/890be241d1.js" crossorigin="anonymous"></script>   

@@ -42,3 +42,13 @@ def available_table(booked_date, booked_time, guests):
 
 def book_success(request):
     return render(request, 'successbooking/successbooking.html')
+
+def show_bookings(request):
+    user_bookings = Reservation.objects.filter(user=request.user)
+    today = date.today()
+    return render(request, 'showbooking/showbooking.html', {'user_bookings': user_bookings, 'today': today})
+
+def show_menu(request):
+    menu_items = Menu.objects.all()
+    return render(request, 'menu/menu.html', {'menu_items': menu_items})
+
