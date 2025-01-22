@@ -21,5 +21,5 @@ from myrestaurant.views import homepage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage, name='homepage'),
-    path('accounts/', include('allauth.urls')),   
+    path('accounts/', include('allauth.urls')), 
 ]
