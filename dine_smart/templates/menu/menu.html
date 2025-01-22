@@ -1,0 +1,25 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+
+<table class="table table-light opacity-75">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="display-4">menu</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for menu in menu_items %}
+        <tr>
+            <th>{{ menu.menu_name }}</th>
+            <td>{{ menu.description }}</td>
+            <td>{{ menu.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
