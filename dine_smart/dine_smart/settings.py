@@ -26,12 +26,22 @@ SECRET_KEY = 'django-insecure-%j4@b!jfibgv40c^le_4h5=y(_@0stycvlk@0qk5j)vqwxkx$f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
+if DEBUG:
+    ALLOWED_HOSTS = ['8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
+    CSRF_TRUSTED_ORIGINS = ['https://8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
+else:
+    # Later change to herokuaoo URL!
+    ALLOWED_HOSTS = ['8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
+    CSRF_TRUSTED_ORIGINS = ['https://8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +59,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ROOT_URLCONF = 'dine_smart.urls'
 
