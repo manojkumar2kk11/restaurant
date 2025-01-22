@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Reservation, Table, Menu
+from myrestaurant.forms import ReserveForm
 # Create your views here.
 
 def homepage(request):
