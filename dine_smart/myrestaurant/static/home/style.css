@@ -1,31 +1,95 @@
+/* Global Reset */
+html, body {
+    height: 100%; /* Ensures body fills the full viewport */
+    margin: 0; /* Remove default margin */
+}
+
+/* Set background image */
 body {
+    background: url('images/home_background.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensure the background image covers the full page */
     color: #cd9400;
     font-family: 'Cormorant Garamond', serif;
 }
 
-
-.hero {
-    background: url('images/home_background.jpg') no-repeat center center;
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 100vh;
+/* Hero Section */
+.hero-text {
+    text-align: center;
+    padding: 20px;
 }
 
+/* Navbar Styles */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7); /* Slight transparent dark background for navbar */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure navbar is above content */
+}
 
-@media (min-width: 425px) {
+.navbar .navbar-brand {
+    font-size: 1.5rem;
+}
 
-    .hero {
-        min-height: 100vh;
-        align-items: center;
+.navbar-nav .nav-item .nav-link {
+    color: #fff; /* White text in navbar */
+}
+
+/* Main Content Styles */
+main {
+    padding-top: 70px; /* Ensure content doesn't hide behind the fixed navbar */
+    padding-bottom: 80px; /* Ensure content doesn't hide behind the fixed footer */
+    min-height: 70vh; /* Ensure content area has at least 70vh of space */
+}
+
+/* Centered content */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* Footer Styles */
+footer {
+    background-color: rgba(64, 64, 64, 0.9); /* Dark footer background */
+    color: #cd9400; /* Theme text color */
+    font-family: 'Cormorant Garamond', serif;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0; /* Padding for footer */
+    text-align: center;
+    z-index: 500;
+}
+
+/* Container inside footer to hold icons */
+footer .container {
+    display: flex;
+    justify-content: center; /* Ensure icons are centered */
+    align-items: center;
+    flex-wrap: wrap; /* Allow the icons to wrap if necessary on smaller screens */
+}
+
+/* Individual Social Media Icons */
+footer i {
+    font-size: 2em;
+    color: #cd9400;
+    transition: color 0.3s ease;
+    margin: 0 20px; /* More space between icons */
+}
+
+footer i:hover {
+    color: #ffffff; /* Change color on hover */
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    footer i {
+        font-size: 1.5rem; /* Make icons smaller on mobile */
+        margin: 0 10px; /* Adjust margin for smaller screens */
     }
-
 }
 
-@media (max-width: 426px) {
-    .hero-text {
-        background-color: rgba(64, 64, 64, 0.75);
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-}

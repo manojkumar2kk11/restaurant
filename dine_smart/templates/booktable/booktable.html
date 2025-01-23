@@ -1,28 +1,25 @@
 {% extends "home/home.html" %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<div class="container-fluid">
-    <div class="col-md-4">
+<div class="container d-flex justify-content-center align-items-center my-5">
+    {% if user.is_authenticated %}
+    <div class="col-md-6">
         <form method="POST" action="{% url 'booktable' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form}}
+            {{ form }}
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </div>
-</div>
-{% else %}
-<div class="container-fluid">
-    <div class="col-md-4">
-        <h1 class="display-4"> Kindly log in to proceed with making a table booking.</h1>
-        <hr class=" my-4">
+    {% else %}
+    <div class="col-md-6 text-center">
+        <h1 class="display-4">Kindly log in to proceed with making a table booking.</h1>
+        <hr class="my-4">
         <p>Sign up below to book your table booking.</p>
         <p class="lead">
             <a class="btn btn-primary btn-lg" href="{% url 'account_login' %}" role="button">Login</a>
             <a class="btn btn-info btn-lg" href="{% url 'account_signup' %}" role="button">SignUp</a>
         </p>
     </div>
+    {% endif %}
 </div>
-{% endif %}
-
 {% endblock %}

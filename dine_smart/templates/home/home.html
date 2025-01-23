@@ -1,92 +1,96 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="Description" content="The restaurant is ready for you.">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
-  </style>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="The restaurant is ready for you.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400&display=swap');
+    </style>
 
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'home/style.css' %}">
-  <title>The Delicious Restaurant</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/style.css' %}">
+    <title>The Delicious Restaurant</title>
 </head>
+
 <body>
-  <div class="hero container-fluid">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="{%url 'homepage' %}">Delicious Restaurant</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkIcons"
-          aria-controls="navbarNavDarkIcons" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDarkIcons">
-          <ul class="navbar-nav ms-auto">
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_logout' %}">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'show_bookings' %}">
-                <i class="fa-solid fa-calendar-check"></i>
-                <span>Show Bookings</span>
-              </a>
-            </li>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'account_login' %}">
-                <i class="fa-solid fa-right-to-bracket"></i>
-                <span>Login</span>
-              </a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'show_menu' %}">
-                <i class="fa-solid fa-utensils"></i>
-                <span>Menu</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'booktable' %}">
-                <i class="fa-solid fa-chair"></i>
-                <span>Book Table</span>
-              </a>
-            </li>
-          </ul>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'homepage' %}">Delicious Restaurant</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkIcons"
+                aria-controls="navbarNavDarkIcons" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkIcons">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'show_bookings' %}">
+                            <i class="fa-solid fa-calendar-check"></i>
+                            <span>Show Bookings</span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_login' %}">
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'show_menu' %}">
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>Menu</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'booktable' %}">
+                            <i class="fa-solid fa-chair"></i>
+                            <span>Book Table</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
-  
+
+    <!-- Main Content -->
     <main>
-      <!-- footer -->
-      <div class="container footer fixed-bottom">
-        <div class="row justify-content-center">
-          <div class="col-2">
-            <a href="https://facebook.com"><i class="fa-brands fa-square-facebook"></i></a>
-          </div>
-          <div class="col-2">
-            <a href="https://instagram.com"><i class="fa-brands fa-square-instagram"></i></a>
-          </div>
-          <div class="col-2">
-            <a href="https://twitter.com"><i class="fa-brands fa-square-x-twitter"></i></a>
-          </div>
+        {% block content %}
+        <div class="container">
+            <div class="hero-text">
+                <h1>Welcome to Delicious Restaurant!</h1>
+                <p>Your favorite place to dine in style.</p>
+            </div>
         </div>
-      </div>
+        {% endblock %}
     </main>
-  </div>
+    <footer>
+      <div class="social-container">
+          <a href="https://facebook.com"><i class="fa-brands fa-square-facebook"></i></a>
+          <a href="https://instagram.com"><i class="fa-brands fa-square-instagram"></i></a>
+          <a href="https://twitter.com"><i class="fa-brands fa-square-x-twitter"></i></a>
+      </div>
+    </footer>
 
-    <!-- scripts -->
-  <script src="https://kit.fontawesome.com/890be241d1.js" crossorigin="anonymous"></script>   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+    <!-- Scripts -->
+    <script src="https://kit.fontawesome.com/890be241d1.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
