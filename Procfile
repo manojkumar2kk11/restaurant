@@ -1,1 +1,1 @@
-web: gunicorn dine_smart.wsgi:application
+web: gunicorn dine_smart.dine_smart.wsgi:application
