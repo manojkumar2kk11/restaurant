@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Reservation, Table, Menu
 from myrestaurant.forms import ReserveForm
+from datetime import *
+
 # Create your views here.
 
 def homepage(request):
@@ -30,6 +32,7 @@ def book_table(request):
                 return render(request, 'booktable/booktable.html', {'form': form, 'error_message': error_message})
     else:
         form = ReserveForm()
+        
 
     return render(request, 'booktable/booktable.html', {'form': form})
 
@@ -50,7 +53,9 @@ def show_bookings(request):
     today = date.today()
     return render(request, 'showbooking/showbooking.html', {'user_bookings': user_bookings, 'today': today})
 
+
 def show_menu(request):
+    print("Menu page accessed")
     menu_items = Menu.objects.all()
     return render(request, 'menu/menu.html', {'menu_items': menu_items})
 
