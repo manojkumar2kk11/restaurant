@@ -26,15 +26,15 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     ALLOWED_HOSTS = ['8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
     CSRF_TRUSTED_ORIGINS = ['https://8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
 else:
     # Later change to herokuaoo URL!
-    ALLOWED_HOSTS = ['8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
-    CSRF_TRUSTED_ORIGINS = ['https://8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net']
+    ALLOWED_HOSTS = ['my-restaurant-d6396b265d69.herokuapp.com']
+    CSRF_TRUSTED_ORIGINS = ['https://my-restaurant-d6396b265d69.herokuapp.com']
 
 
 # Application definition
