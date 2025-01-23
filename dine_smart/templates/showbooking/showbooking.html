@@ -32,10 +32,10 @@
                         </td>
                         {% else %}
                         <td>
-                            <a href="{% url 'deletebooking' booking.id %}" class="btn btn-danger text-decoration-none">Cancel</a>
+                            <a href="{% url 'deletebooking' booking.id %}" class="btn btn-danger text-decoration-none">Delete</a>
                         </td>
                         <td>
-                            <a href="{% url 'modifybooking' booking.id %}" class="btn btn-warning text-decoration-none">Amend</a>
+                            <a href="{% url 'modifybooking' booking.id %}" class="btn btn-warning text-decoration-none">Modify</a>
                         </td>
                         {% endif %}
                     </tr>
