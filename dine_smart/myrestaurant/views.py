@@ -59,3 +59,28 @@ def show_menu(request):
     menu_items = Menu.objects.all()
     return render(request, 'menu/menu.html', {'menu_items': menu_items})
 
+
+def delete_booking(request, entry_id):
+    entry = get_object_or_404(Reservation, pk=entry_id)
+
+    if request.method == 'POST':
+        entry.delete()
+        return redirect('show_bookings')
+    return render(request, 'deletebooking/deletebooking.html', {'entry': entry})
+
+
+def modify_booking(request, entry_id):
+    entry = get_object_or_404(Reservation, pk=entry_id)
+
+    if request.method == 'POST':
+        form = ReserveForm(request.POST, instance=entry)
+
+        if form.is_valid():
+            form.save()
+            return redirect('show_bookings')
+
+    else:
+        form = ReserveForm(instance=entry)
+
+    return render(request, 'modifybooking/modifybooking.html', {'form': form})
+
