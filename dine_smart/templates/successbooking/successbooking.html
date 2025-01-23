@@ -2,10 +2,14 @@
 
 {% block content %}
 
-<div class="container-fluid">
-    <div class="col-md-4">
-        <h1 class="display-4"> Thank you for booking with us...</h1>
-        <hr class=" my-4">
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+    <div class="col-md-6 text-center">
+        <h1 class="display-4 text-success">Thank you for booking with us!</h1>
+        <hr class="my-4">
+        <p class="lead">
+            We look forward to serving you. If you need to modify or cancel your booking, please visit your bookings page.
+        </p>
+        <a class="btn btn-primary btn-lg" href="{% url 'show_bookings' %}" role="button">View My Bookings</a>
     </div>
 </div>
 
