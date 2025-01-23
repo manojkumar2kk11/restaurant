@@ -1,0 +1,16 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-8 offset-md-2">
+        <h1>Confirm Booking Cancellation</h1>
+        <p>You are about to cancel your booking. Are you sure you want to proceed with this action? Once cancelled, the reservation will be permanently removed from our system.</p>
+        <form method="post">
+          {% csrf_token %}
+          <input class="btn btn-danger" type="submit" value="Yes, Cancel Booking">
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
