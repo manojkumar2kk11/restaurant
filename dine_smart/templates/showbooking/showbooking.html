@@ -1,0 +1,59 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+<main>
+    {% if user.is_authenticated %}
+    <div class="container-fluid">
+        <div class="table-responsive">
+            <table class="table table-success table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Guests</th>
+                        <th scope="col">Delete</th>
+                        <th scope="col">Modify</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for booking in user_bookings %}
+                    <tr>
+                        <td>{{ booking.id }}</td>
+                        <td>{{ booking.date }}</td>
+                        <td>{{ booking.time }}</td>
+                        <td>{{ booking.guests }}</td>
+                        {% if booking.date < today %}
+                        <td>
+                            <a href="{% url 'deletebooking' booking.id %}" class="btn btn-danger disabled text-decoration-none">Delete</a>
+                        </td>
+                        <td>
+                            <a href="{% url 'modifybooking' booking.id %}" class="btn btn-warning disabled text-decoration-none">Modify</a>
+                        </td>
+                        {% else %}
+                        <td>
+                            <a href="{% url 'deletebooking' booking.id %}" class="btn btn-danger text-decoration-none">Cancel</a>
+                        </td>
+                        <td>
+                            <a href="{% url 'modifybooking' booking.id %}" class="btn btn-warning text-decoration-none">Amend</a>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% else %}
+    <div class="container-fluid text-center">
+        <h1 class="display-4"> Please sign in to view your reservations.</h1>
+        <hr class="my-4">
+        <p>Or Register below to make your reservation.</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="{% url 'account_login' %}" role="button">Login</a>
+            <a class="btn btn-info btn-lg" href="{% url 'account_signup' %}" role="button">SignUp</a>
+        </p>
+    </div>
+    {% endif %}
+</main>
+{% endblock %}
