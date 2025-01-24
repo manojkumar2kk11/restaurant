@@ -19,7 +19,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-TESTING= True
+TESTING= False
 
 if DEBUG:
     ALLOWED_HOSTS = [
