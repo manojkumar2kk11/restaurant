@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import djmoney.models.fields
-import myrestaurant.models
+import dine_smart.myrestaurant.models
 
 
 class Migration(migrations.Migration):
@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
                 ('date', models.DateField()),
                 ('time', models.TimeField()),
                 ('guests', models.IntegerField()),
-                ('table', models.ForeignKey(default=myrestaurant.models.get_default_table, on_delete=django.db.models.deletion.CASCADE, to='myrestaurant.table')),
+                ('table', models.ForeignKey(default=dine_smart.myrestaurant.models.get_default_table, on_delete=django.db.models.deletion.CASCADE, to='myrestaurant.table')),
                 ('user', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

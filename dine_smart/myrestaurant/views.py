@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Reservation, Table, Menu
-from myrestaurant.forms import ReserveForm
+from dine_smart.myrestaurant.forms import ReserveForm
 from datetime import *
 
 # Create your views here.
