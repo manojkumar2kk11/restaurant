@@ -19,13 +19,15 @@ SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-TESTING= False
+TESTING = False
 
 if DEBUG:
     ALLOWED_HOSTS = [
+        '127.0.0.1', 'localhost',
         '8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net'
     ]
     CSRF_TRUSTED_ORIGINS = [
+        'http://127.0.0.1:8000', 'http://localhost:8000',
         'https://8000-manojkumar2k-restaurant-bs1rcczclmt.ws.codeinstitute-ide.net'
     ]
 else:
