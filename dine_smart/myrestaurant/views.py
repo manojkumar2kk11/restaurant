@@ -1,7 +1,10 @@
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Reservation, Table, Menu
 from dine_smart.myrestaurant.forms import ReserveForm
 from datetime import *
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 # Create your views here.
 
@@ -11,6 +14,7 @@ def homepage(request):
 def booktable(request):
     return render(request, 'booktable/booktable.html', {'user': request.user})
 
+@login_required
 def book_table(request):
     if request.method == 'POST':
         form = ReserveForm(request.POST)
@@ -48,6 +52,7 @@ def available_table(booked_date, booked_time, guests):
 def book_success(request):
     return render(request, 'successbooking/successbooking.html')
 
+@login_required
 def show_bookings(request):
     user_bookings = Reservation.objects.filter(user=request.user)
     today = date.today()
@@ -59,19 +64,27 @@ def show_menu(request):
     menu_items = Menu.objects.all()
     return render(request, 'menu/menu.html', {'menu_items': menu_items})
 
-
+@login_required
 def delete_booking(request, entry_id):
     entry = get_object_or_404(Reservation, pk=entry_id)
 
+    # Ownership check
+    if entry.user != request.user:
+        return HttpResponseForbidden("You are not allowed to delete this booking.")
+    
     if request.method == 'POST':
         entry.delete()
         return redirect('show_bookings')
     return render(request, 'deletebooking/deletebooking.html', {'entry': entry})
 
-
+@login_required
 def modify_booking(request, entry_id):
     entry = get_object_or_404(Reservation, pk=entry_id)
 
+    # Ownership check
+    if entry.user != request.user:
+        return HttpResponseForbidden("You are not allowed to modify this booking.")
+    
     if request.method == 'POST':
         form = ReserveForm(request.POST, instance=entry)
 
